@@ -1,0 +1,49 @@
+:root {
+  --primary: #ea580c;
+  --primary-hover: #9a3412;
+  --dark: #1e293b;
+  --light: #f8fafc;
+  --white: #ffffff;
+  --border: #e2e8f0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+body { background: var(--light); color: var(--dark); padding-bottom: 120px; }
+
+header { background: linear-gradient(135deg, var(--primary-hover), var(--primary)); color: var(--white); padding: 20px; text-align: center; }
+.container { max-width: 1000px; margin: 20px auto; padding: 0 15px; }
+
+.simulation-panel { background: var(--white); padding: 15px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.control-group { display: flex; flex-direction: column; gap: 5px; }
+.control-group select { padding: 8px; border-radius: 4px; border: 1px solid var(--border); }
+
+.main-layout { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 768px) { .main-layout { grid-template-columns: 2fr 1fr; } }
+
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; margin-top: 15px; }
+.product-card { background: var(--white); border: 1px solid var(--border); padding: 15px; border-radius: 8px; display: flex; flex-direction: column; gap: 10px; position: relative; }
+.product-tag { position: absolute; top: 10px; right: 10px; font-size: 10px; padding: 3px 6px; border-radius: 10px; background: #ffedd5; color: var(--primary); font-weight: bold; }
+
+.btn { padding: 10px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; text-align: center; }
+.btn-primary { background: var(--primary); color: var(--white); width: 100%; }
+
+.checkout-panel { background: var(--white); padding: 20px; border-radius: 8px; border: 1px solid var(--border); height: fit-content; }
+.cart-item { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 10px; border-bottom: 1px dashed var(--border); padding-bottom: 5px; }
+.cart-total { margin-top: 15px; font-size: 16px; font-weight: bold; display: flex; justify-content: space-between; border-top: 2px solid var(--light); padding-top: 10px; }
+
+/* Modal de Pagamento */
+.gateway-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 100; }
+.gateway-modal { background: var(--white); padding: 30px; border-radius: 8px; text-align: center; }
+.spinner { width: 40px; height: 40px; border: 4px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite; margin: 15px auto; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Banner de Cookies */
+.cookie-banner { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 900px; background: var(--dark); color: var(--white); padding: 20px; border-radius: 8px; display: flex; flex-direction: column; gap: 15px; z-index: 900; }
+@media (min-width: 768px) { .cookie-banner { flex-direction: row; align-items: center; justify-content: space-between; } }
+.cookie-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-cookie { padding: 8px 12px; border-radius: 4px; border: none; font-weight: bold; cursor: pointer; }
+.btn-cookie-accept { background: var(--primary); color: var(--white); }
+.btn-cookie-reject { background: #475569; color: var(--white); }
+.btn-cookie-manage { background: transparent; border: 1px solid #94a3b8; color: #94a3b8; }
+.cookie-preferences { background: #334155; padding: 15px; margin-top: 10px; border-radius: 4px; }
+.pref-item { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 13px; }
