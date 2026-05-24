@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raízes do Nordeste - Painel Omnichannel</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="container header-flex">
+            <div class="brand">
+                <h1>Raízes do Nordeste</h1>
+                <p>Arquitetura de Sistemas & Governança de Interfaces</p>
+            </div>
+            <div class="user-area" id="userArea">
+                <button class="btn btn-auth" id="btnLoginClick">Entrar / Cadastrar</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="simulator-box" aria-label="Controles de Simulação">
+            <div class="simulator-title">Mecanismo de Teste Omnichannel</div>
+            <div class="control-group">
+                <label for="storeFilter">Selecione a Unidade Operacional:</label>
+                <select id="storeFilter">
+                    <option value="completa">Unidade Recife (Boa Viagem) — Cozinha Completa</option>
+                    <option value="reduzida">Unidade Caruaru — Cozinha Reduzida (Restrições)</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="seasonFilter">Selecione a Janela Temporal:</label>
+                <select id="seasonFilter">
+                    <option value="regular">Calendário de Operação Regular</option>
+                    <option value="junino">Calendário Festivo (Gatilho Junino)</option>
+                </select>
+            </div>
+        </section>
+
+        <main class="main-layout">
+            <section aria-label="Produtos Disponíveis">
+                <h2 class="section-title">Cardápio do Dia</h2>
+                <div class="menu-grid" id="menuView">
+                    </div>
+            </section>
+
+            <aside class="cart-card" aria-label="Carrinho de Compras">
+                <h3 class="cart-title">Sua Sacola</h3>
+                <div class="cart-items-list" id="cartListView">
+                    </div>
+                <div class="cart-totals">
+                    <div class="total-row">
+                        <span>Subtotal</span>
+                        <span id="labelSubtotal">R$ 0,00</span>
+                    </div>
+                    <div class="total-row final">
+                        <span>Total</span>
+                        <span id="labelTotal">R$ 0,00</span>
+                    </div>
+                    <p class="points-preview" id="pointsPreview">Este pedido vai gerar <strong>0 pontos</strong> de fidelidade.</p>
+                    <button class="btn btn-checkout" id="checkoutTrigger" disabled>
+                        Confirmar Pedido
+                    </button>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <div class="auth-overlay" id="authModal">
+        <div class="auth-box">
+            <button class="btn-close" id="btnCloseAuth">×</button>
+            <h3 class="auth-title">Identificação do Cliente</h3>
+            <p class="auth-desc">Cadastre-se para acumular pontos no nosso Clube de Vantagens e finalizar seu pedido.</p>
+            
+            <form id="authForm" class="auth-form">
+                <div class="form-group">
+                    <label for="userName">Nome Completo</label>
+                    <input type="text" id="userName" required placeholder="Ex: Maria da Silva">
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">E-mail</label>
+                    <input type="email" id="userEmail" required placeholder="Ex: maria@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="userPhone">Telefone (WhatsApp)</label>
+                    <input type="tel" id="userPhone" required placeholder="(00) 00000-0000" pattern="[0-9() -]{10,15}">
+                </div>
+                
+                <div class="lgpd-consent">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="lgpdConsent" required>
+                        <span class="checkmark"></span>
+                        <span class="consent-text">
+                            Estou ciente e consinto que meus dados (Nome, E-mail e Telefone) sejam armazenados exclusivamente para o processamento do pedido e para a geração de pontos no Programa de Fidelidade, conforme a <a href="#">Política de Privacidade (LGPD)</a>.
+                        </span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-submit">Criar Conta & Continuar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="payment-overlay" id="paymentLockscreen">
+        <div class="payment-modal">
+            <div class="spinner"></div>
+            <h3>Conectando ao Terminal</h3>
+            <p>Processando transação de ponta a ponta...</p>
+            <span>Aguardando o hardware externo responder.</span>
+        </div>
+    </div>
+
+    <div class="cookie-banner" id="privacyBanner">
+        <div class="cookie-wrapper">
+            <div class="cookie-main-content">
+                <div class="cookie-title">Governança de Dados & Consentimento</div>
+                <p class="cookie-desc">Utilizamos cookies essenciais para o funcionamento do carrinho. Não coletamos dados analíticos sem seu consentimento explícito.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="btn-ck btn-ck-reject" id="btnRejectCookies">Rejeitar Opcionais</button>
+                <button class="btn-ck btn-ck-accept" id="btnAcceptCookies">Aceitar Todos</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
